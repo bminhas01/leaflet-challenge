@@ -13,3 +13,13 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: "mapbox/light-v10",
   accessToken: API_KEY
 }).addTo(myMap);
+
+// Create variable for API query
+var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+
+// Get data using d3
+d3.json(url, function(response){
+    // Set the list within the dictionary returned to a variable
+    var responseList = response.features
+    
+})
