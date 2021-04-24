@@ -30,7 +30,12 @@ d3.json(url, function (response) {
 
     // If geometry property, add new marker to the map
     if (location) {
-      L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
+      // L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
+      L.circle([location.coordinates[1], location.coordinates[0]],{
+        fillOpacity: 0.75,
+        color: "black",
+        fillColor: "red",
+      radius: [location.coordinates[2]]}).addTo(myMap);
     }
   }
 })
