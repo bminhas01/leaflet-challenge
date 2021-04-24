@@ -1,8 +1,8 @@
 // Creating map object
 var myMap = L.map("mapid", {
-    center: [21.5218, -77.7812],
-    zoom:3 
-  });
+  center: [21.5218, -77.7812],
+  zoom: 3
+});
 
 // Adding tile layer to map
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -18,8 +18,19 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
 // Get data using d3
-d3.json(url, function(response){
-    // Set the list within the dictionary returned to a variable
-    var responseList = response.features
-    
+d3.json(url, function (response) {
+  // Set the list within the dictionary returned to a variable
+  var responseList = response.features
+
+  // Loop through data
+  for (var i = 0; i < responseList.length; i++) {
+
+    // Set the geometry property to a variable
+    var location = responseList[i].geometry;
+
+    // If geometry property, add new marker to the map
+    if (location) {
+      L.marker([location.coordinates[1], location.coordinates[0]]).addTo(myMap);
+    }
+  }
 })
