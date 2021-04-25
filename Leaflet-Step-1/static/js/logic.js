@@ -25,7 +25,6 @@ function createMap(earthquakes) {
 
   // Create a map with default layers to display
   var myMap = L.map("mapid", {
-    // center: [21.5218, -77.7812],
     center: [40.7608, -111.8910],
     zoom: 5,
     layers: [
@@ -49,8 +48,6 @@ function createMap(earthquakes) {
         '<i style="background-color:' + setColor(depths[i]+1) + '"></i> ' +
         depths[i] + (depths[i + 1] ? ' &ndash; ' + depths[i + 1] + '<br>' : '+')
     }
-
-    
     return div;
 
   }
@@ -66,9 +63,10 @@ function createMarkers(response) {
   for (var i = 0; i < responseList.length; i++) {
 
     var earthquakeRecords = L.circle([responseList[i].geometry.coordinates[1], responseList[i].geometry.coordinates[0]], {
-      stroke: false,
+      stroke: true,
+      weight: 0.5,
       fillOpacity: 0.75,
-      color: "white",
+      color: "black",
       fillColor: setColor(responseList[i].geometry.coordinates[2]),
       radius: markerSize(responseList[i].properties.mag)
     }).bindPopup("<h3>" + responseList[i].properties.title + "<h3><h3>Time: " + new Date(responseList[i].properties.time) + "</h3>");
