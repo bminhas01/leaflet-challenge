@@ -7,7 +7,7 @@ function setColor(depth) {
   return depth > 90 ? '#FF3333' :
     depth > 70 ? '#FF9933' :
       depth > 50 ? '#FFB266' :
-        depth > 30 ? '#FFFF66' :
+        depth > 30 ? '#E7E33E' :
           depth > 10 ? '#B2FF66' :
             '#66FF66';
 }
@@ -46,7 +46,7 @@ function createMap(earthquakes) {
     for (var i = 0; i < depths.length; i++) {
 
       div.innerHTML +=
-        '<i style="background-color:' + setColor(depths[i]) + '"></i> ' +
+        '<i style="background-color:' + setColor(depths[i]+1) + '"></i> ' +
         depths[i] + (depths[i + 1] ? ' &ndash; ' + depths[i + 1] + '<br>' : '+')
     }
 
