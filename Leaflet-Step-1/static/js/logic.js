@@ -27,6 +27,8 @@ d3.json(url, function (response) {
 
     // Set the geometry property to a variable
     var location = responseList[i].geometry;
+    var placeName = responseList[i].place;
+    console.log(placeName)
 
     // If geometry property, add new marker to the map
     if (location) {
@@ -35,7 +37,8 @@ d3.json(url, function (response) {
         fillOpacity: 0.75,
         color: "black",
         fillColor: "red",
-      radius: [location.coordinates[2]]}).addTo(myMap);
+        radius: [location.coordinates[2]]}).addTo(myMap);
+      
     }
   }
 })
