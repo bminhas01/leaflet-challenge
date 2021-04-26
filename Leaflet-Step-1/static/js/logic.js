@@ -69,7 +69,8 @@ function createMarkers(response) {
       color: "black",
       fillColor: setColor(responseList[i].geometry.coordinates[2]),
       radius: markerSize(responseList[i].properties.mag)
-    }).bindPopup("<h3>" + responseList[i].properties.title + "<h3><h3>Time: " + new Date(responseList[i].properties.time) + "</h3>");
+    }).bindPopup("Magnitude: " + responseList[i].properties.mag + "<br>Location: " + responseList[i].properties.place
+    + "<br>Time: " + new Date(responseList[i].properties.time));
 
     earthquakeMarkers.push(earthquakeRecords)
   }
