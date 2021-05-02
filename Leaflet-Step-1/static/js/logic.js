@@ -86,7 +86,6 @@ function createMarkers(response) {
 
 // Create variable for API query
 var earthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson";
-var techtonicURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json"
 
 // Get data using d3
 d3.json(earthquakeURL, createMarkers);
