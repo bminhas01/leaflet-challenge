@@ -66,7 +66,6 @@ function createMarkers(response) {
 
   // Loop through data to create circles
   for (var i = 0; i < responseList.length; i++) {
-
     var earthquakeRecords = L.circle([responseList[i].geometry.coordinates[1], responseList[i].geometry.coordinates[0]], {
       stroke: true,
       weight: 0.5,
@@ -77,6 +76,7 @@ function createMarkers(response) {
     }).bindPopup("Magnitude: " + responseList[i].properties.mag + "<br>Location: " + responseList[i].properties.place
       + "<br>Time: " + new Date(responseList[i].properties.time));
 
+    // Add earthquakeMarkers to earthquakeRecords array
     earthquakeMarkers.push(earthquakeRecords)
   }
 
