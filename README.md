@@ -5,7 +5,8 @@ The United States Geological Survey (USGS) is responsible for providing scientif
 ### Level 1: Basic Visualization
 
 1. **Get your data set** 
-The USGS provides earthquake data in a number of formats, each updated every 5 minutes. Visit the [USGS GeoJSON Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) page and pick a data set to visualize. The data set selected for this project is the [USGS Magnitude 1.0+ Earthquakes, Past Week] (https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson), which includes earthquakes within the last week that were of a magnitude greater than 1.0 on the [Richter scale](https://www.usgs.gov/faqs/moment-magnitude-richter-scale-what-are-different-magnitude-scales-and-why-are-there-so-many?qt-news_science_products=0#qt-news_science_products). The URL of this JSON will be used to pull in the data for our visualization.
+
+The USGS provides earthquake data in a number of formats, each updated every 5 minutes. Visit the [USGS GeoJSON Feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) page and pick a data set to visualize. The data set selected for this project is the [USGS Magnitude 1.0+ Earthquakes, Past Week](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson), which includes earthquakes within the last week that were of a magnitude greater than 1.0 on the [Richter scale](https://www.usgs.gov/faqs/moment-magnitude-richter-scale-what-are-different-magnitude-scales-and-why-are-there-so-many?qt-news_science_products=0#qt-news_science_products). The URL of this JSON will be used to pull in the data for our visualization.
 
 2. **Import & Visualize the Data**
 
