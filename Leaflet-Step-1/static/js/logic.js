@@ -3,6 +3,7 @@ function markerSize(magnitude) {
   return magnitude * 10000
 }
 
+// Function to set circle color based on depth value
 function setColor(depth) {
   return depth > 90 ? '#FF3333' :
     depth > 70 ? '#FF9933' :
@@ -12,6 +13,7 @@ function setColor(depth) {
             '#66FF66';
 }
 
+// Function to create the map graph
 function createMap(earthquakes) {
   // Create tile layer to be background of map
   var grayscalemap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -33,19 +35,20 @@ function createMap(earthquakes) {
     ]
   });
 
+  // Create legend to display on the page
   var legend = L.control({ position: 'bottomright' });
 
   legend.onAdd = function (myMap) {
 
     var div = L.DomUtil.create('div', 'info legend');
-      depths = [-10, 10, 30, 50, 70, 90];
+    depths = [-10, 10, 30, 50, 70, 90];
     // labels = [];
 
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < depths.length; i++) {
 
       div.innerHTML +=
-        '<i style="background-color:' + setColor(depths[i]+1) + '"></i> ' +
+        '<i style="background-color:' + setColor(depths[i] + 1) + '"></i> ' +
         depths[i] + (depths[i + 1] ? ' &ndash; ' + depths[i + 1] + '<br>' : '+')
     }
     return div;
@@ -54,12 +57,14 @@ function createMap(earthquakes) {
   legend.addTo(myMap)
 }
 
+// Function to create scatter plot
 function createMarkers(response) {
   // Set the list within the dictionary returned to a variable
   var responseList = response.features
 
   var earthquakeMarkers = []
-  // Loop through data
+
+  // Loop through data to create circles
   for (var i = 0; i < responseList.length; i++) {
 
     var earthquakeRecords = L.circle([responseList[i].geometry.coordinates[1], responseList[i].geometry.coordinates[0]], {
@@ -70,7 +75,7 @@ function createMarkers(response) {
       fillColor: setColor(responseList[i].geometry.coordinates[2]),
       radius: markerSize(responseList[i].properties.mag)
     }).bindPopup("Magnitude: " + responseList[i].properties.mag + "<br>Location: " + responseList[i].properties.place
-    + "<br>Time: " + new Date(responseList[i].properties.time));
+      + "<br>Time: " + new Date(responseList[i].properties.time));
 
     earthquakeMarkers.push(earthquakeRecords)
   }
@@ -85,7 +90,5 @@ var techtonicURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/mast
 
 // Get data using d3
 d3.json(earthquakeURL, createMarkers);
-// d3.json(techtonicURL, createMarkersTech);
-
 
 
